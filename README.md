@@ -2,7 +2,7 @@
 
 # Machine Learning Projects
 
-### Three end-to-end ML projects spanning NLP, recommendation systems, and deep learning
+### Six end-to-end ML projects spanning NLP, recommendation systems, deep learning, and regression
 
 ![Python](https://img.shields.io/badge/Python-3.10-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
@@ -22,6 +22,14 @@
 | 1 | [Image Classification](#1--image-classification--handwritten-digit-recognition) | Multi-class classification | CNN (TensorFlow/Keras) | **98.83%** test accuracy |
 | 2 | [Sentiment Analysis](#2--sentiment-analysis--tweet-classification) | NLP / text classification | TF-IDF + Logistic Regression | **71%** accuracy, 0.70 weighted F1 |
 | 3 | [Music Recommendation](#3--music-recommendation-system) | Recommendation | Content-based, cosine similarity | Top-K similar songs |
+
+### 🎓 Internship Work — [Oasis Infobyte (OIBSIP)](./oasis_infobyte_internship/)
+
+| # | Project | Problem Type | Model | Result |
+|---|---------|--------------|-------|--------|
+| 4 | [Sales Prediction](./oasis_infobyte_internship/sales_prediction/) | Regression | Linear Regression | **R² = 0.91** |
+| 5 | [Car Price Prediction](./oasis_infobyte_internship/car_price_prediction/) | Regression | Random Forest Regressor | MAE / MSE / R² evaluated |
+| 6 | [Spam Email Detection](./oasis_infobyte_internship/spam_email_detection/) | Text classification | TF-IDF + Logistic Regression | **96.32%** test accuracy |
 
 ---
 
@@ -130,9 +138,13 @@ Machine-learning-project/
 ├── sentiment_Analysis_project/
 │   ├── dataset/sentiment_analysis.csv
 │   └── notebooks/sentiment_analysis.ipynb
-└── music_recommendation_system/
-    ├── dataset/music_dataset.csv
-    └── notebooks/music_recommendation.ipynb
+├── music_recommendation_system/
+│   ├── dataset/music_dataset.csv
+│   └── notebooks/music_recommendation.ipynb
+└── oasis_infobyte_internship/          # OIBSIP Data Science Internship
+    ├── sales_prediction/
+    ├── car_price_prediction/
+    └── spam_email_detection/
 ```
 
 ---
