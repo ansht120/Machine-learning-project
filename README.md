@@ -20,16 +20,11 @@
 | # | Project | Problem Type | Approach | Result |
 |---|---------|--------------|----------|--------|
 | 1 | [Image Classification](#1--image-classification--handwritten-digit-recognition) | Multi-class classification | CNN (TensorFlow/Keras) | **98.83%** test accuracy |
-| 2 | [Sentiment Analysis](#2--sentiment-analysis--tweet-classification) | NLP / text classification | TF-IDF + Logistic Regression | **71%** accuracy, 0.70 weighted F1 |
-| 3 | [Music Recommendation](#3--music-recommendation-system) | Recommendation | Content-based, cosine similarity | Top-K similar songs |
-
-### 🎓 Internship Work — [Oasis Infobyte (OIBSIP)](./oasis_infobyte_internship/)
-
-| # | Project | Problem Type | Model | Result |
-|---|---------|--------------|-------|--------|
-| 4 | [Sales Prediction](./oasis_infobyte_internship/sales_prediction/) | Regression | Linear Regression | **R² = 0.91** |
-| 5 | [Car Price Prediction](./oasis_infobyte_internship/car_price_prediction/) | Regression | Random Forest Regressor | MAE / MSE / R² evaluated |
-| 6 | [Spam Email Detection](./oasis_infobyte_internship/spam_email_detection/) | Text classification | TF-IDF + Logistic Regression | **96.32%** test accuracy |
+| 2 | [Spam Email Detection](#2--spam-email-detection) | Binary text classification | TF-IDF + Logistic Regression | **96.32%** test accuracy |
+| 3 | [Sales Prediction](#3--sales-prediction) | Regression | Linear Regression | **R² = 0.91** · MSE 2.86 |
+| 4 | [Car Price Prediction](#4--car-price-prediction) | Regression | Random Forest Regressor | MAE · MSE · R² evaluated |
+| 5 | [Sentiment Analysis](#5--sentiment-analysis--tweet-classification) | NLP / text classification | TF-IDF + Logistic Regression | **71%** accuracy, 0.70 weighted F1 |
+| 6 | [Music Recommendation](#6--music-recommendation-system) | Recommendation | Content-based, cosine similarity | Top-K similar songs |
 
 ---
 
@@ -69,7 +64,85 @@ Input (28×28×1)
 
 ---
 
-## 2 · Sentiment Analysis — Tweet Classification
+## 2 · Spam Email Detection
+
+**Problem:** Classify emails as spam or legitimate — the classic asymmetric-cost problem, where a spam email reaching the inbox is a mild annoyance but a legitimate email wrongly filtered could be a missed job offer.
+
+### Pipeline
+
+```
+Raw email text
+  ↓ Text preprocessing (NLTK) — cleaning, tokenization
+  ↓ TF-IDF vectorization — weight terms by discriminative power
+  ↓ Logistic Regression classifier
+  ↓ Evaluate on held-out test set
+```
+
+### Results
+
+| Split | Accuracy |
+|-------|----------|
+| Training | 96.11% |
+| **Test** | **96.32%** |
+
+> Test accuracy slightly *exceeding* training accuracy is a healthy sign — the model hasn't memorized the training set and generalizes to unseen emails. A large gap in the other direction would signal overfitting.
+
+**Why TF-IDF over raw word counts:** it down-weights words appearing across all emails ("the", "and") and up-weights terms that actually distinguish spam from legitimate mail, so the classifier learns from signal rather than noise.
+
+📓 [`spam_email_detection_project/`](./spam_email_detection_project/)
+
+---
+
+## 3 · Sales Prediction
+
+**Problem:** Predict product sales from outlet and item attributes — MRP, outlet size, item type, and outlet location. Sales forecasting drives inventory planning: under-forecast and you stock out; over-forecast and you tie up capital in unsold goods.
+
+### Pipeline
+
+```
+Raw sales data
+  ↓ Handle missing values and duplicates
+  ↓ Exploratory data analysis (distribution, correlation)
+  ↓ Encode categorical variables (outlet type, item category)
+  ↓ Train Linear Regression
+  ↓ Evaluate — MSE, MAE, RMSE, R²
+```
+
+### Results
+
+| Metric | Value |
+|--------|-------|
+| **R² Score** | **0.91** |
+| Mean Squared Error | 2.86 |
+
+> R² of 0.91 means the model explains 91% of the variance in sales. For a linear model on retail data that's strong — it suggests the relationship between MRP, outlet characteristics and sales is largely linear, so a more complex tree-based model would buy little here.
+
+📓 [`sales_prediction_project/`](./sales_prediction_project/)
+
+---
+
+## 4 · Car Price Prediction
+
+**Problem:** Estimate a used car's selling price from year, mileage, fuel type, transmission, and engine specs. Resale pricing is the core of any used-vehicle marketplace — mispricing costs either seller margin or buyer trust.
+
+### Pipeline
+
+```
+Vehicle listings data
+  ↓ Clean and inspect
+  ↓ Feature engineering — derive vehicle age from year
+  ↓ Encode categoricals (fuel type, transmission, seller type)
+  ↓ Train Random Forest Regressor
+  ↓ Evaluate — MAE, MSE, R²
+```
+
+**Why Random Forest here:** depreciation isn't linear. A car loses value fastest in its first years and the curve flattens later; mileage interacts with age rather than acting independently. A tree ensemble captures those non-linear interactions without needing them specified in advance — which is precisely why it suits this problem where Linear Regression suited sales prediction.
+
+📓 [`car_price_prediction_project/`](./car_price_prediction_project/)
+
+---
+
+## 5 · Sentiment Analysis — Tweet Classification
 
 **Problem:** Classify social media posts as positive, negative, or neutral — the core of brand monitoring and customer feedback analysis.
 
@@ -105,7 +178,7 @@ Stratified 80/20 train-test split preserves class proportions.
 
 ---
 
-## 3 · Music Recommendation System
+## 6 · Music Recommendation System
 
 **Problem:** Given a song a listener enjoys, suggest similar tracks — the content-based approach used when you lack the user-interaction history that collaborative filtering requires.
 
@@ -133,18 +206,17 @@ Raw listening data
 
 ```
 Machine-learning-project/
-├── image_classification_project/
+├── image_classification_project/       # CNN · MNIST digit recognition
 │   └── imageclassification.ipynb
-├── sentiment_Analysis_project/
+├── spam_email_detection_project/       # NLP · TF-IDF + Logistic Regression
+├── sales_prediction_project/           # Regression · Linear Regression
+├── car_price_prediction_project/       # Regression · Random Forest
+├── sentiment_Analysis_project/         # NLP · tweet sentiment classification
 │   ├── dataset/sentiment_analysis.csv
 │   └── notebooks/sentiment_analysis.ipynb
-├── music_recommendation_system/
-│   ├── dataset/music_dataset.csv
-│   └── notebooks/music_recommendation.ipynb
-└── oasis_infobyte_internship/          # OIBSIP Data Science Internship
-    ├── sales_prediction/
-    ├── car_price_prediction/
-    └── spam_email_detection/
+└── music_recommendation_system/        # Content-based recommender
+    ├── dataset/music_dataset.csv
+    └── notebooks/music_recommendation.ipynb
 ```
 
 ---
@@ -178,6 +250,14 @@ jupyter notebook
 jupyter notebook image_classification_project/imageclassification.ipynb
 ```
 
+**Spam Detection · Sales Prediction · Car Price Prediction** — open the notebook in each project folder and run all cells.
+
+```bash
+jupyter notebook spam_email_detection_project/
+jupyter notebook sales_prediction_project/
+jupyter notebook car_price_prediction_project/
+```
+
 **Sentiment Analysis** — downloads NLTK corpora on first run.
 
 ```bash
@@ -204,7 +284,8 @@ jupyter notebook music_recommendation.ipynb
 |------|-----------|
 | **Deep Learning** | CNN architecture design, convolution/pooling layers, softmax classification, Adam optimization |
 | **NLP** | Text cleaning, stopword removal, lemmatization, TF-IDF with n-grams |
-| **Classical ML** | Logistic regression, class imbalance handling, stratified splitting |
+| **Classical ML** | Linear & logistic regression, Random Forest ensembles, class imbalance handling, stratified splitting |
+| **Regression Analysis** | R², MSE, MAE, RMSE interpretation; matching model complexity to relationship structure |
 | **Recommender Systems** | Content-based filtering, one-hot encoding, cosine similarity, cold-start reasoning |
 | **Evaluation** | Accuracy, precision, recall, F1-score, per-class analysis, train/test gap interpretation |
 | **Data Handling** | Pandas transformations, feature scaling, deduplication, aggregation |
