@@ -258,6 +258,8 @@ jupyter notebook sales_prediction_project/
 jupyter notebook car_price_prediction_project/
 ```
 
+> **Datasets not included.** These three notebooks expect `spam_mail.csv`, `sales dataset.csv`, and `car_data.csv` respectively, which aren't committed to this repository. Place your own copy alongside the notebook, or update the `read_csv()` path in the first cell. The notebooks retain their saved outputs, so the results are reproducible reading even without the raw files.
+
 **Sentiment Analysis** — downloads NLTK corpora on first run.
 
 ```bash
