@@ -20,11 +20,13 @@
 | # | Project | Problem Type | Approach | Result |
 |---|---------|--------------|----------|--------|
 | 1 | [Image Classification](#1--image-classification--handwritten-digit-recognition) | Multi-class classification | CNN (TensorFlow/Keras) | **98.83%** test accuracy |
-| 2 | [Spam Email Detection](#2--spam-email-detection) | Binary text classification | TF-IDF + Logistic Regression | **96.32%** test accuracy |
-| 3 | [Sales Prediction](#3--sales-prediction) | Regression | Linear Regression | **R² = 0.91** · MSE 2.86 |
-| 4 | [Car Price Prediction](#4--car-price-prediction) | Regression | Random Forest Regressor | MAE · MSE · R² evaluated |
+| 2 | [Spam Email Detection](#2--spam-email-detection) 🎓 | Binary text classification | TF-IDF + Logistic Regression | **96.32%** test accuracy |
+| 3 | [Sales Prediction](#3--sales-prediction) 🎓 | Regression | Linear Regression | **R² = 0.91** · MSE 2.86 |
+| 4 | [Car Price Prediction](#4--car-price-prediction) 🎓 | Regression | Random Forest Regressor | MAE · MSE · R² evaluated |
 | 5 | [Sentiment Analysis](#5--sentiment-analysis--tweet-classification) | NLP / text classification | TF-IDF + Logistic Regression | **71%** accuracy, 0.70 weighted F1 |
 | 6 | [Music Recommendation](#6--music-recommendation-system) | Recommendation | Content-based, cosine similarity | Top-K similar songs |
+
+> 🎓 **Oasis Infobyte Data Science Internship (OIBSIP)** — projects 2, 3, and 4 were completed as the three assigned internship tasks (Task 3, Task 1, and Task 2 respectively).
 
 ---
 
