@@ -26,7 +26,7 @@
 | 5 | [Sentiment Analysis](#5--sentiment-analysis--tweet-classification) | NLP / text classification | TF-IDF + Logistic Regression | **71%** accuracy, 0.70 weighted F1 |
 | 6 | [Music Recommendation](#6--music-recommendation-system) | Recommendation | Content-based, cosine similarity | Top-K similar songs |
 
-> 🎓 **Oasis Infobyte Data Science Internship (OIBSIP)** — projects 2, 3, and 4 were completed as the three assigned internship tasks (Task 3, Task 1, and Task 2 respectively). They were originally developed in a [separate internship repository](https://github.com/ansht120/oasis-infobyte-data-science-internship), now consolidated here with its full commit history preserved; that repository is archived.
+> 🎓 **Oasis Infobyte Data Science Internship (OIBSIP)** — projects 2, 3, and 4 were completed as the three assigned internship tasks (Task 3, Task 1, and Task 2 respectively). They were originally developed as a standalone internship repository, since consolidated here with their full commit history preserved.
 
 ---
 
